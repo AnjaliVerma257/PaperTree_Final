@@ -1,0 +1,171 @@
+﻿<!-- 
+
+Project Codename: Papertree
+Codding By Anjali Verma
+Version 1.0
+
+(In Development Phase)
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+ 
+    function goToSearch(){
+location="Signup.html";
+}
+
+window.onload = function() {
+  var s=window.location.href;
+  s=s.replace("%20"," ");s=s.replace("%20"," ");s=s.replace("%20"," ");s=s.replace("%20"," ");s=s.replace("%20"," ");s=s.replace("%20"," ");s=s.replace("%20"," ");s=s.replace("%20"," ");s=s.replace("%20"," ");
+  
+  var n=s.indexOf("=");
+  var n1=s.length;
+  x=s.substring(n+1,n1);
+  if(n>0)
+        alert(x);
+ 
+};
+
+
+    </script>
+
+<title>Welcome To PaperTree</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<!---------------------------- CSS ------------------------------------------>
+
+	<link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+	
+<!---------------------------- CSS ------------------------------------------>
+
+<!---------------------------- JS ------------------------------------------->
+
+  
+<!---------------------------- JS ------------------------------------------->
+
+</head>
+
+<body>
+	<div id="frame">
+		<header>
+			<div id="pre-header">
+                            <div class="logo"><a href="index.html"><img src="images/logo.png" class="" alt=""></a></div>
+			</div>
+		</header>
+		<div id="page">
+                    <div class="int-slider">
+		        <div class="gallery">
+		            <div class="slider">
+		                <ul>
+		                    <li><img src="images/slides/Slide1.jpg" class="slides" alt=""></li>
+		                    <li><img src="images/slides/Slide2.jpg" class="slides" alt=""></li>
+		                    <li><img src="images/slides/Slide3.jpg" class="slides" alt=""></li>
+		                </ul>
+		                
+		            <!-- Navigation Button Controls -->
+		            <div id="slider-nav">
+		                <button data-dir="prev" class="slide-prev"></button>
+		                <button data-dir="next" class="slide-next"></button>
+		            </div>
+		                
+		            </div>
+		        </div>
+			</div>
+
+			
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <div class="int-loginbox">
+				<h1>Login</h1>
+                                <form action="SignIn.jsp" method="post">
+					<label>Email</label><input type="text" class="logtext" name='Email'>
+						<div class="clearfix"></div>
+					<label>Password</label><input type="password" class="logtext" name='Password'>
+						<div class="clearfix"></div>
+                                                <a href="Forgot.html" class="ft_pass"><aside style="font-size:8px;display:inline;">&lowast;&nbsp;</aside>Forgot Password</a>
+						<div class="clearfix"></div>
+                                                <div class="log_but"><input type="button" value="Signup" onclick='goToSearch()'  class="button"><input type="submit" value="Login" style="margin-right:0px;"  class="button"></div>
+                                        <label id="érr"></label>
+				</form>
+			</div>
+                    
+                    <div class="clearfix"></div>
+	<div id="int_footer">
+	
+		<div id="navigation">
+			<ul>
+                            <li><a href="About.html">About</a></li>
+                            <li><a href="Contact.html">Contact</a></li>
+                            <li><a href="help.html">Help</a></li>
+			</ul>
+		</div>
+	
+	</div>
+                    
+		</div>
+		
+		
+		
+	</div>	
+    
+    
+            <script src="js/jquery.js"></script>
+        <script src="js/slider.js"></script>
+        <script>
+            // 
+            jQuery(document).ready(function ($) {
+                // creating a container variable to hold the 'UL' elements. It uses method chaining.
+                var container=$('div.slider')
+                                            .css('overflow','hidden')
+                                            .children('ul');
+                 
+                /* 
+                On the event of mouse-hover, 
+                    i) Change the visibility of Button Controls.
+                    ii) SET/RESET the "intv" variable to switch between AutoSlider and Stop mode.
+                */
+                $('.gallery').hover(function( e ){
+                    $('#slider-nav').toggle();
+                    return e.type=='mouseenter'?clearInterval(intv):autoSlider();
+                });
+                 
+                // Creating the 'slider' instance which will set initial parameters for the Slider.
+                var sliderobj= new slider(container,$('#slider-nav'));
+                /*
+                This will trigger the 'setCurrentPos' and 'transition' methods on click of any button
+                 "data-dir" attribute associated with the button will determine the direction of sliding.
+                */
+                sliderobj.nav.find('button').on('click', function(){
+                    sliderobj.setCurrentPos($(this).data('dir'));
+                    sliderobj.transition();
+                });
+                 
+                autoSlider(); // Calling autoSlider() method on Page Load.
+                 
+                /* 
+                This function will initialize the interval variable which will cause execution of the inner function after every 2 seconds automatically.
+                */
+                function autoSlider()
+                {
+                    return intv = setInterval(function(){
+                        sliderobj.setCurrentPos('next');
+                        sliderobj.transition();
+                    }, 1500);
+                }
+                 
+            });
+        </script>
+</body>
+
+</html>
+    
